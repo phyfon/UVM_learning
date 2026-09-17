@@ -5,11 +5,16 @@ class counter_transaction extends uvm_sequence_item;
     rand bit count_enable;
     rand bit [3:0] overflow_val;
 
+    bit [3:0] count_out;
+    bit overflow_flag;
+
     `uvm_object_utils_begin(counter_transaction)
-        `uvm_field_int(nRST, UVM_ALL_ON)
-        `uvm_field_int(clear, UVM_ALL_ON)
+        `uvm_field_int(nRST,         UVM_ALL_ON)
+        `uvm_field_int(clear,        UVM_ALL_ON)
         `uvm_field_int(count_enable, UVM_ALL_ON)
         `uvm_field_int(overflow_val, UVM_ALL_ON)
+        `uvm_field_int(count_out,    UVM_ALL_ON)
+        `uvm_field_int(overflow_flag,UVM_ALL_ON)
     `uvm_object_utils_end
 
     function new(string name = "counter_transaction");
