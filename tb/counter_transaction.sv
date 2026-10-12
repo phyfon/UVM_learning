@@ -5,8 +5,8 @@ class counter_transaction extends uvm_sequence_item;
     rand bit count_enable;
     rand bit [3:0] overflow_val;
 
-    bit [3:0] count_out;
-    bit overflow_flag;
+    logic [3:0] count_out;
+    logic overflow_flag;
 
     `uvm_object_utils_begin(counter_transaction)
         `uvm_field_int(nRST,         UVM_ALL_ON)

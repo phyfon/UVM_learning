@@ -1,3 +1,6 @@
+
+
+
 class counter_agent extends uvm_agent;
 
     `uvm_component_utils(counter_agent)

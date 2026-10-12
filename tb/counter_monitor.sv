@@ -1,3 +1,4 @@
+
 class counter_monitor extends uvm_monitor;
 
     `uvm_component_utils(counter_monitor)
@@ -15,11 +16,8 @@ class counter_monitor extends uvm_monitor;
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
 
-        if (!uvm_config_db#(virtual counter_if)::get(
-                this, "", "vif", vif)) begin
-            `uvm_fatal("NOVIF",
-                       "Virtual interface not found")
-        end
+    if (!uvm_config_db#(virtual counter_if#(4))::get(this, "", "vif", vif))
+    `uvm_fatal("NOVIF", "Could not retrieve counter interface") 
     endfunction
 
     task run_phase(uvm_phase phase);
@@ -29,6 +27,8 @@ class counter_monitor extends uvm_monitor;
         forever begin
 
             @(posedge vif.CLK);
+	    
+	    #10ps; // wait a little before sampling
 
             tr = counter_transaction::type_id::create("tr");
 

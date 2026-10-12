@@ -1,4 +1,10 @@
+`timescale 1ns / 10ps
+
 module tb_top;
+
+    import uvm_pkg::*;
+    import counter_pkg::*;
+
 
     parameter int NBITS = 4;
 
@@ -28,14 +34,11 @@ module tb_top;
 
 
     initial begin
-
-        uvm_config_db#(virtual counter_if)::set(
-            null,
-            "*",
-            "vif",
-            vif
-        );
-
+	vif.nRST = 0;
+	vif.clear = 0;
+	vif.count_enable = 0;
+	vif.overflow_val = 4'd10;
+	uvm_config_db#(virtual counter_if#(4))::set(null, "*", "vif", vif);
         run_test("counter_test");
 
     end

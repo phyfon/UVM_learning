@@ -1,8 +1,10 @@
+
+
 class counter_driver extends uvm_driver #(counter_transaction);
 
     `uvm_component_utils(counter_driver)
 
-    virtual counter_if vif;
+   virtual counter_if#(4) vif; 
 
     function new(string name = "counter_driver",
                  uvm_component parent = null);
@@ -12,11 +14,10 @@ class counter_driver extends uvm_driver #(counter_transaction);
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
 
-        if (!uvm_config_db#(virtual counter_if)::get(
-                this, "", "vif", vif)) begin
-            `uvm_fatal("NOVIF",
-                       "Virtual interface not found")
-        end
+if (!uvm_config_db#(virtual counter_if#(4))::get(
+        this, "", "vif", vif)) begin
+    `uvm_fatal("NOVIF", "Virtual interface not found")
+end
     endfunction
 
     task run_phase(uvm_phase phase);
