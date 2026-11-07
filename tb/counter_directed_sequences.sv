@@ -44,6 +44,8 @@ class counter_reset_sequence extends counter_directed_sequence;
         drive_step(0, 1, 1, 4'd3);         // remain reset despite other controls
         drive_step(1, 0, 0, 4'd3);         // hold zero after reset release
         drive_step(1, 0, 1, 4'd3);         // restart counting from one
+	drive_step(0, 0, 0, 4'd0); 	// reset: count=0, overflow_flag=0
+	drive_step(1, 0, 0, 4'd0); 	// hold 0: overflow_flag becomes 1
     endtask
 endclass
 
@@ -112,6 +114,11 @@ class counter_overflow_sequence extends counter_directed_sequence;
         repeat (2) drive_step(1, 0, 1, 4'd4); // 2,3
         drive_step(1, 0, 0, 4'd3);             // hold 3, threshold=3: flag=1
         drive_step(1, 0, 0, 4'd4);             // hold 3, threshold=4: flag=0
+
+	drive_step(1, 0, 0, 4'd2); // hold 3 even though threshold is 2
+	drive_step(1, 0, 1, 4'd2); // count 3 -> 1 because 4 > 2
+	drive_step(1, 0, 1, 4'd2); // count 1 -> 2, overflow_flag=1
+	drive_step(1, 0, 1, 4'd2); // count 2 -> 1, overflow_flag=0
 
         drive_step(1, 1, 0, 4'd1);             // clear to zero
         repeat (3) drive_step(1, 0, 1, 4'd1); // 1 -> 1 -> 1: flag stays 1

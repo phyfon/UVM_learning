@@ -1,5 +1,5 @@
 # vsim -c -l logs/counter_overflow_test.log work.tb_top "+UVM_TESTNAME=counter_overflow_test" -do "run -all; quit -f" 
-# Start time: 15:52:38 on Nov 07,2026
+# Start time: 16:03:03 on Nov 07,2026
 # ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim-64
 # //  Version 2021.4 linux_x86_64 Oct 13 2021
@@ -46,7 +46,7 @@
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO @ 0: reporter [RNTST] Running test counter_overflow_test...
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 34100: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 38100: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # 
 # --- UVM Report Summary ---
 # 
@@ -60,6 +60,6 @@
 # [RNTST]     1
 # [TEST_DONE]     1
 # ** Note: $finish    : /package/eda/mg/questa2021.4/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 341 ns  Iteration: 54  Instance: /tb_top
-# End time: 15:52:40 on Nov 07,2026, Elapsed time: 0:00:02
+#    Time: 381 ns  Iteration: 54  Instance: /tb_top
+# End time: 16:03:05 on Nov 07,2026, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
