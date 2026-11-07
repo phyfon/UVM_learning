@@ -18,13 +18,19 @@ class counter_test extends uvm_test;
 
     endfunction
 
+    virtual function counter_sequence create_sequence();
+    	return counter_sequence::type_id::create("seq");
+    endfunction
+
     task run_phase(uvm_phase phase);
 
         counter_sequence seq;
 
         phase.raise_objection(this);
-
-        seq = counter_sequence::type_id::create("seq");
+        seq = create_sequence();
+        if (seq == null)
+            `uvm_fatal("NULL_SEQ", "Test failed to create its sequence")
+       
 
         seq.start(env.agent.sequencer);
 

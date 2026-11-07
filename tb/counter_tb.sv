@@ -39,7 +39,7 @@ module tb_top;
 	vif.count_enable = 0;
 	vif.overflow_val = 4'd10;
 	uvm_config_db#(virtual counter_if#(4))::set(null, "*", "vif", vif);
-        run_test("counter_test");
+        run_test(); // set by +UVM_TESTNAME
 
     end
 
